@@ -8,11 +8,11 @@ import ContactsItem from "./components/ContactsItem";
 
 import "./App.css";
 
-const App = ({ filter, addContact, onChangeFilter, deleteContact }) => {
+const App = ({ filter, onChangeFilter, deleteContact }) => {
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactForm onSubmit={addContact} />
+      <ContactForm />
       <Filter onChangeFilter={onChangeFilter} />
       <Contacts>
         <ContactsItem items={filter} onDeleteContact={deleteContact} />
@@ -36,7 +36,6 @@ const mapStateToProps = ({ contacts: { items, filter } }, props) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addContact: (newContact) => dispatch(actions.addContact(newContact)),
     onChangeFilter: (e) => dispatch(actions.onChangeFilter(e.target.value)),
     deleteContact: (e) => dispatch(actions.deleteContact(e.target.id)),
   };
